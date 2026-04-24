@@ -40,10 +40,8 @@ export interface Idea {
   example: string;
 }
 
-export interface GenerationResult {
-  sessionId: string;
+export interface GenerateResult {
+  resultId: string;
   summary: string;
   ideas: Idea[];
 }
-
-export type AppScreen = 'assessment' | 'loading' | 'results';
