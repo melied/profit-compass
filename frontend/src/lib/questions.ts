@@ -1,0 +1,96 @@
+import type { Question } from '@/types';
+
+export const QUESTIONS: Question[] = [
+  {
+    id: 'skills',
+    text: 'What are your main skills or areas of expertise?',
+    sub: 'Select all that apply — even if you consider them basic.',
+    type: 'multi',
+    options: [
+      { label: 'Writing & Communication', desc: 'Copywriting, blogging, editing, storytelling' },
+      { label: 'Design & Visual Arts', desc: 'Graphic design, illustration, photography, video' },
+      { label: 'Tech & Programming', desc: 'Web dev, software, automation, data' },
+      { label: 'Teaching & Coaching', desc: 'Training, tutoring, mentoring, curriculum' },
+      { label: 'Marketing & Sales', desc: 'Social media, ads, SEO, funnels' },
+      { label: 'Crafts & Making', desc: 'Handmade goods, 3D printing, sewing, art' },
+      { label: 'Business & Finance', desc: 'Accounting, consulting, project management' },
+      { label: 'None of the above', desc: "I'm a complete beginner — that's totally fine" },
+    ],
+  },
+  {
+    id: 'interests',
+    text: 'Which topics genuinely excite you?',
+    sub: 'Pick your top 2–3 areas. These become your niche.',
+    type: 'multi',
+    options: [
+      { label: 'Health & Wellness', desc: 'Fitness, nutrition, mental health, skincare' },
+      { label: 'Personal Finance', desc: 'Saving, investing, side hustles, budgeting' },
+      { label: 'Parenting & Family', desc: 'Kids activities, education, family life' },
+      { label: 'Lifestyle & Productivity', desc: 'Organization, habits, self-improvement' },
+      { label: 'Food & Cooking', desc: 'Recipes, meal planning, food culture' },
+      { label: 'Travel & Adventure', desc: 'Trip planning, culture, outdoor activities' },
+      { label: 'Tech & Gaming', desc: 'Software, gadgets, games, AI tools' },
+      { label: 'Creative Arts', desc: 'Music, painting, writing, crafts, fashion' },
+    ],
+  },
+  {
+    id: 'time',
+    text: 'How many hours per week can you realistically dedicate?',
+    sub: 'Be honest — sustainable beats ambitious every time.',
+    type: 'single',
+    options: [
+      { label: 'Under 5 hours', desc: 'Side project around a busy schedule' },
+      { label: '5–10 hours', desc: 'A few evenings or a weekend block' },
+      { label: '10–20 hours', desc: 'Half-time commitment, serious side hustle' },
+      { label: '20–40 hours', desc: 'Near full-time, ready to go all in' },
+    ],
+  },
+  {
+    id: 'budget',
+    text: 'What is your startup budget?',
+    sub: 'Available capital to invest in tools, ads, or assets.',
+    type: 'single',
+    options: [
+      { label: '$0 — bootstrap only', desc: 'Free tools, organic growth, no spending' },
+      { label: '$1–$100', desc: 'Basic tools, a domain, small experiments' },
+      { label: '$100–$500', desc: 'Some paid tools, small ad budget, courses' },
+      { label: '$500–$2,000', desc: 'Real investment — ads, outsourcing, software' },
+    ],
+  },
+  {
+    id: 'audience',
+    text: 'Who would you most like to serve or sell to?',
+    sub: 'Your target customer — even a rough idea helps a lot.',
+    type: 'single',
+    options: [
+      { label: 'Other businesses (B2B)', desc: 'Agencies, startups, SMBs, professionals' },
+      { label: 'Consumers (B2C)', desc: 'Regular people solving everyday problems' },
+      { label: 'Creators & freelancers', desc: 'Bloggers, artists, consultants, solopreneurs' },
+      { label: 'Students & learners', desc: 'People trying to acquire skills or knowledge' },
+    ],
+  },
+  {
+    id: 'goal',
+    text: 'What is your primary income goal?',
+    sub: 'This shapes which model makes the most sense for you.',
+    type: 'single',
+    options: [
+      { label: '$500–$1,500/month extra', desc: 'Replace a bill, fund a goal, gain confidence' },
+      { label: '$1,500–$5,000/month', desc: 'Meaningful second income or career transition' },
+      { label: '$5,000–$15,000/month', desc: 'Replace a full-time salary' },
+      { label: '$15,000+/month', desc: 'Scalable business with serious upside' },
+    ],
+  },
+  {
+    id: 'style',
+    text: 'How do you prefer to work?',
+    sub: 'Your natural working style predicts what you will stick with.',
+    type: 'single',
+    options: [
+      { label: 'Alone, independently', desc: 'Self-directed, no clients or calls' },
+      { label: 'With a small number of clients', desc: 'Relationship-driven, 1-on-1 work' },
+      { label: 'Creating content for an audience', desc: 'Building in public, social media, a brand' },
+      { label: 'Building products or systems', desc: 'Automated income, once-built assets' },
+    ],
+  },
+];

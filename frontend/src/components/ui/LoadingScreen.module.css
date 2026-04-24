@@ -1,0 +1,9 @@
+.wrap { text-align: center; padding: 4rem 1rem; animation: fadeIn 0.3s ease; }
+.spinner { width: 44px; height: 44px; border: 3px solid var(--line); border-top-color: var(--gold); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 1.75rem; }
+.title { font-family: var(--font-playfair), serif; font-size: 20px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+.stage { font-size: 14px; color: var(--muted); animation: fadeIn 0.4s ease; min-height: 22px; }
+.dots { display: flex; justify-content: center; gap: 8px; margin-top: 1.5rem; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--line); transition: background 0.5s ease; }
+.dot.active { background: var(--gold); }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
