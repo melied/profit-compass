@@ -1,12 +1,10 @@
 const express = require('express');
 const { v4: uuidv4 } = require('uuid');
-const { generateIdeas } = require('../services/anthropic');
 const { getDb } = require('../services/db');
 
 const router = express.Router();
 
 // POST /api/ideas/generate
-// Body: { answers: {...}, sessionId?: string }
 router.post('/generate', async (req, res) => {
   const { answers, sessionId } = req.body;
 
@@ -15,29 +13,51 @@ router.post('/generate', async (req, res) => {
   }
 
   try {
-    const result = await generateIdeas(answers);
+    // 🟢 أفكار مجانية (بدون AI)
+    const ideas = [
+      {
+        title: "Freelance Writing",
+        description: "Offer blog writing or copywriting services on platforms like Upwork.",
+        score: 85
+      },
+      {
+        title: "Print-on-Demand Store",
+        description: "Sell custom t-shirts, mugs, and designs using platforms like Shopify.",
+        score: 78
+      },
+      {
+        title: "Sell Digital Products",
+        description: "Create and sell ebooks, templates, or planners online.",
+        score: 90
+      },
+      {
+        title: "Social Media Management",
+        description: "Manage accounts for small businesses and creators.",
+        score: 82
+      }
+    ];
+
     const db = getDb();
     const id = sessionId || uuidv4();
     const now = Math.floor(Date.now() / 1000);
 
     const existing = db.prepare('SELECT id FROM sessions WHERE id = ?').get(id);
+
     if (existing) {
       db.prepare(
         'UPDATE sessions SET answers = ?, ideas = ?, updated_at = ? WHERE id = ?'
-      ).run(JSON.stringify(answers), JSON.stringify(result), now, id);
+      ).run(JSON.stringify(answers), JSON.stringify(ideas), now, id);
     } else {
       db.prepare(
         'INSERT INTO sessions (id, answers, ideas, created_at, updated_at) VALUES (?, ?, ?, ?, ?)'
-      ).run(id, JSON.stringify(answers), JSON.stringify(result), now, now);
+      ).run(id, JSON.stringify(answers), JSON.stringify(ideas), now, now);
     }
 
-    res.json({ sessionId: id, ...result });
+    res.json({ sessionId: id, ideas });
+
   } catch (err) {
-    console.error('Generation error:', err.message);
-    if (err.message.includes('JSON')) {
-      return res.status(502).json({ error: 'AI returned an unexpected format. Please retry.' });
-    }
-    res.status(500).json({ error: 'Failed to generate ideas. Please try again.' });
+    console.error('Error:', err.message);
+    res.status(500).json({ error: 'Failed to generate ideas' });
   }
 });
 
